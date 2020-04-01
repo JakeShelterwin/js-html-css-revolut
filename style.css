@@ -30,6 +30,10 @@ main {
   display: none;
 }
 
+#mostra{
+  display: block;
+}
+
 /* ************************************************************************* */
 /* ******************************NAVBAR FISSA TOP****************************** */
 /* ************************************************************************* */
@@ -60,6 +64,7 @@ main {
   color: #191c1f;
 }
 
+/* il posizion relative serve da ancora agli elementi absolute */
 .navbarTop .menuLargo>ul>li {
   display: inline-block;
   color: rgba(25, 28, 31, 0.5);
@@ -71,7 +76,14 @@ main {
   color: #191c1f;
 }
 
-.navbarTop ul li button {
+/* è inline block perché così il bottone si posiziona accanto, il bottone non è nella lista altrimenti
+con il JS si viene a creare un bug che lo fa scomparire */
+.navbarTop ul {
+  display: inline-block;
+}
+
+.navbarTop button {
+  display: inline-block;
   padding: 1rem 4.125rem;
   border: none;
   border-radius: 2rem;
@@ -83,19 +95,30 @@ main {
   background-color: #eb008d;
   padding: 0.625rem 1.5rem;
 }
-.navbarTop ul li button:hover {
+.navbarTop button:hover {
   background-color: #d2007e;
 }
 
+/* nascondo le 3 lineette del menu hamburger a grandi risoluzioni */
 .menuLargo .fa-bars{
   display: none;
 }
 
+/* Questa classe gestisce i sottomenu che sono nascosti finché non si fa mouseenter da js */
 .sottomenuNascosto {
   position: absolute;
+  background-color: white;
 }
 
-/* GESTIONE MENU A SCOMPARSA */
+.sottomenuNascosto ul li{
+  margin: 10px;
+}
+
+.sottomenuNascosto ul li a{
+  margin-right: 0px;
+}
+
+/* GESTIONE MENU A TUTTA PAGINA A SCOMPARSA A RISOLUZIONI BASSE */
 .navbarTop .hamburgerMenu{
   position: absolute;
   top: 0;
@@ -113,8 +136,9 @@ main {
   margin-top: 8px;
   font-size: 25px;
 }
+
 /* ************************************************************************* */
-/* ******************************MEDIA QUERY  ****************************** */
+/* ****************************** MEDIA QUERY ****************************** */
 /* ************************************************************************* */
 @media all and (max-width: 1200px){
 
@@ -124,13 +148,19 @@ main {
   .navbarTop .menuLargo ul{
     display: none;
   }
-
-  .navbarTop .hamburgerMenu{
+  .navbarTop .menuLargo button{
     display: none;
+  }
+  .navbarTop .hamburgerMenu{
     color: rgba(25, 28, 31, 0.5);
     background-color: white;
   }
   .menuLargo .fa-bars{
     display: block;
   }
+}
+@media all and (min-width: 1201px){
+ #mostra{
+   display: none;
+ }
 }

@@ -4,15 +4,34 @@
 // ricreo anche la funzionalità di menù hamburger a viewport più piccoli;
 // cerco di far si che funzioni la questione di far comparire e scomparire ciò che mi serve sui viewport diversi (quindi come abbiam fatto questa mattina sulla correzione EX che era di ieri).
 
-//GESTIONE COMPORTAMENTO AL CLICK
-$(".menuLargo ul li").on({
-click: function(){
-    $(this).children().hide();
-  },
+// questa variabile tiene in memoria l'ultimo menu aperto (quindi quello che è visibile)
+var menuAperto;
+
+//GESTIONE COMPORTAMENTO MENU A SCOMPARSA
+$(".menuLargo>ul>li").on({
 mouseenter: function(){
+    if (menuAperto){
+      menuAperto.hide();
+    }
+    menuAperto = $(this).children();
     $(this).children().show();
   }
 });
+
+// chiudo il sottomenu se clicco da qualche parte e è aperto
+$("main").click(
+  function(){
+    $(".menuLargo>ul>li .sottomenuNascosto").hide();
+  }
+);
+
+//Altro modo: nascondili tutti e mostra solo quello in cui mi trovo
+// $(".nav-item").mouseenter(
+//  function(){
+//  $(".nav-item").children("ul").hide();
+//  $(this).children("ul").show();
+//  }
+// );
 
 //metodo alternativo
 // $(".menuLargo ul li").click(
@@ -21,15 +40,15 @@ mouseenter: function(){
 //   }
 // );
 
-// GESTIONE MENU AD AMBURGER
+// GESTIONE MENU AD HAMBURGER (scompare grazie a css oltre una certa larghezza se è aperto)
 $('.fa-bars').click(
   function(){
-    $('.hamburgerMenu').show();
+    $('.hamburgerMenu').attr('id', 'mostra');
   }
 );
 
 $('.fa-times').click(
   function(){
-    $('.hamburgerMenu').hide();
+    $('.hamburgerMenu').attr('id', 'nulla');
   }
 );
