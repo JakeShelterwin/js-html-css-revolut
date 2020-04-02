@@ -30,10 +30,6 @@ main {
   display: none;
 }
 
-#mostra{
-  display: block;
-}
-
 /* ************************************************************************* */
 /* ******************************NAVBAR FISSA TOP****************************** */
 /* ************************************************************************* */
@@ -137,6 +133,11 @@ con il JS si viene a creare un bug che lo fa scomparire */
   font-size: 25px;
 }
 
+
+ .navbarTop .hamburgerMenu.mostra{
+  display: block;
+}
+
 /* ************************************************************************* */
 /* ****************************** MEDIA QUERY ****************************** */
 /* ************************************************************************* */
@@ -160,7 +161,7 @@ con il JS si viene a creare un bug che lo fa scomparire */
   }
 }
 @media all and (min-width: 1201px){
- #mostra{
+ .navbarTop .hamburgerMenu.mostra{
    display: none;
  }
 }

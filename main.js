@@ -43,12 +43,12 @@ $("main").click(
 // GESTIONE MENU AD HAMBURGER (scompare grazie a css oltre una certa larghezza se è aperto)
 $('.fa-bars').click(
   function(){
-    $('.hamburgerMenu').attr('id', 'mostra');
+    $('.hamburgerMenu').addClass('mostra');
   }
 );
 
 $('.fa-times').click(
   function(){
-    $('.hamburgerMenu').attr('id', 'nulla');
+    $('.hamburgerMenu').removeClass('mostra');
   }
 );
